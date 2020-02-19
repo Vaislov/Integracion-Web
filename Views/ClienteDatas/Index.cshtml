@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WebApplication10.Models.ClienteData>
+
+@{
+    ViewBag.Title = "Mantenedor de Clientes";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Registrar nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoPaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApellidoMaterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DNI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RUC)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoPaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApellidoMaterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DNI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RUC)
+        </td>
+        <td>
+            <button class="btn btn-primary" style="margin-bottom:1rem" onclick="location.href='@Url.Action("Edit", new { id= item.ID})';return false;">Editar</button>
+            <button class="btn btn-info" style="margin-bottom:1rem" onclick="location.href='@Url.Action("Details", new { id= item.ID})';return false;">Detalles</button>
+            <button class="btn btn-danger" style="margin-bottom:1rem" onclick="location.href='@Url.Action("Delete", new { id= item.ID})';return false;">Eliminar</button>
+
+
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+        </td>
+    </tr>
+}
+
+</table>
